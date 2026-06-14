@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Thiệp cưới trực tuyến" />
+  <title>Thiệp Cưới</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== MUSIC BUTTON (FIXED) ===== -->
+  <button id="music-btn" class="music-btn" aria-label="Bật/tắt nhạc nền">
+    <span class="music-icon">▶</span>
+  </button>
+  <audio id="bg-audio" loop preload="none"></audio>
+
+  <!-- ===== TOAST COPY ===== -->
+  <div id="copy-toast" class="copy-toast">Đã sao chép số tài khoản!</div>
+
+  <!-- ===== 1. HERO ===== -->
+  <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-petals" aria-hidden="true">
+      <span class="petal petal-1">✿</span>
+      <span class="petal petal-2">❀</span>
+      <span class="petal petal-3">✾</span>
+      <span class="petal petal-4">✿</span>
+      <span class="petal petal-5">❀</span>
+      <span class="petal petal-6">✾</span>
+    </div>
+    <div class="hero-content">
+      <p class="hero-label reveal">Trân trọng kính mời bạn đến dự lễ cưới của</p>
+      <div class="hero-names reveal">
+        <span id="groom-name" class="hero-name"></span>
+        <span class="hero-ampersand">&amp;</span>
+        <span id="bride-name" class="hero-name"></span>
+      </div>
+      <div class="hero-divider reveal">
+        <span class="divider-line"></span>
+        <span class="divider-ornament">✦</span>
+        <span class="divider-line"></span>
+      </div>
+      <p id="wedding-date-display" class="hero-date reveal"></p>
+    </div>
+    <button id="scroll-down" class="scroll-down-btn" aria-label="Cuộn xuống">
+      <span class="scroll-arrow">↓</span>
+      <span class="scroll-text">Xem thêm</span>
+    </button>
+  </section>
+
+  <!-- ===== 2. INVITATION ===== -->
+  <section id="invitation">
+    <div class="container">
+      <div class="section-ornament reveal">✦ ✦ ✦</div>
+      <h2 class="section-title reveal">Trân trọng kính mời</h2>
+      <p class="invitation-guest reveal">
+        Kính mời <span id="guest-name" class="guest-highlight"></span>
+      </p>
+      <p class="invitation-text reveal">
+        Tới tham dự buổi lễ thành hôn của chúng tôi.<br />
+        Sự hiện diện của bạn là niềm vinh hạnh và hạnh phúc lớn nhất của chúng tôi trong ngày trọng đại này.
+      </p>
+
+      <div class="families-grid reveal">
+        <!-- Nhà trai -->
+        <div class="family-block">
+          <div class="family-tag">Nhà Trai</div>
+          <p id="groom-family" class="family-name"></p>
+          <div id="groom-parents" class="family-parents"></div>
+        </div>
+        <!-- Dấu yêu -->
+        <div class="family-center-ornament">
+          <span class="heart-ornament">❤</span>
+        </div>
+        <!-- Nhà gái -->
+        <div class="family-block">
+          <div class="family-tag">Nhà Gái</div>
+          <p id="bride-family" class="family-name"></p>
+          <div id="bride-parents" class="family-parents"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. EVENT INFO ===== -->
+  <section id="event-info">
+    <div class="container">
+      <div class="section-ornament reveal">✦ ✦ ✦</div>
+      <h2 class="section-title reveal">Thông Tin Sự Kiện</h2>
+      <div class="event-cards-grid">
+        <!-- Lễ cưới -->
+        <div id="ceremony-card" class="event-card reveal">
+          <div class="event-card-icon">🕯</div>
+          <div class="event-card-type">Lễ Cưới</div>
+          <div class="event-card-details">
+            <!-- JS sẽ render nội dung vào đây -->
+          </div>
+        </div>
+        <!-- Tiệc cưới -->
+        <div id="party-card" class="event-card reveal">
+          <div class="event-card-icon">🥂</div>
+          <div class="event-card-type">Tiệc Cưới</div>
+          <div class="event-card-details">
+            <!-- JS sẽ render nội dung vào đây -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. COUNTDOWN ===== -->
+  <section id="countdown">
+    <div class="container">
+      <div class="section-ornament reveal" style="color: var(--gold-light);">✦ ✦ ✦</div>
+      <h2 class="section-title reveal" style="color: var(--white);">Đếm Ngược Đến Ngày Trọng Đại</h2>
+      <div class="countdown-grid reveal">
+        <div class="countdown-box">
+          <span id="countdown-days" class="countdown-number">00</span>
+          <span class="countdown-label">Ngày</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-box">
+          <span id="countdown-hours" class="countdown-number">00</span>
+          <span class="countdown-label">Giờ</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-box">
+          <span id="countdown-minutes" class="countdown-number">00</span>
+          <span class="countdown-label">Phút</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-box">
+          <span id="countdown-seconds" class="countdown-number">00</span>
+          <span class="countdown-label">Giây</span>
+        </div>
+      </div>
+      <p id="countdown-message" class="countdown-message" style="display:none;">Chúng tôi đã chính thức về chung nhà ✨</p>
+    </div>
+  </section>
+
+  <!-- ===== 5. TIMELINE ===== -->
+  <section id="timeline">
+    <div class="container">
+      <div class="section-ornament reveal">✦ ✦ ✦</div>
+      <h2 class="section-title reveal">Lịch Trình</h2>
+      <ul id="timeline-list" class="timeline-list">
+        <!-- JS render -->
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 6. ALBUM ===== -->
+  <section id="album">
+    <div class="container">
+      <div class="section-ornament reveal">✦ ✦ ✦</div>
+      <h2 class="section-title reveal">Khoảnh Khắc Đáng Nhớ</h2>
+      <div class="slider-wrapper reveal">
+        <div id="album-slider" class="album-slider">
+          <!-- JS render slides -->
+        </div>
+        <button id="album-prev" class="slider-btn slider-prev" aria-label="Ảnh trước">&#8249;</button>
+        <button id="album-next" class="slider-btn slider-next" aria-label="Ảnh tiếp">&#8250;</button>
+      </div>
+      <div id="album-indicators" class="album-indicators">
+        <!-- JS render dots -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. MAP ===== -->
+  <section id="map">
+    <div class="container">
+      <div class="section-ornament reveal">✦ ✦ ✦</div>
+      <h2 class="section-title reveal">Địa Điểm Tổ Chức</h2>
+      <p class="map-desc reveal">Nhấn vào nút bên dưới để xem đường đi đến địa điểm tổ chức tiệc.</p>
+      <div class="map-action reveal">
+        <button id="map-btn" class="btn btn-primary btn-icon">
+          <span>📍</span> Xem bản đồ
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. BANK ===== -->
+  <section id="bank">
+    <div class="container">
+      <div class="section-ornament reveal">✦ ✦ ✦</div>
+      <h2 class="section-title reveal">Mừng Cưới</h2>
+      <p class="bank-desc reveal">Nếu bạn muốn gửi lời chúc qua phong bì điện tử, thông tin bên dưới sẽ giúp bạn:</p>
+      <div class="bank-card reveal">
+        <div class="bank-row">
+          <span class="bank-label">Ngân hàng</span>
+          <span id="bank-name" class="bank-value"></span>
+        </div>
+        <div class="bank-divider"></div>
+        <div class="bank-row">
+          <span class="bank-label">Số tài khoản</span>
+          <span id="bank-account" class="bank-value bank-account-num"></span>
+        </div>
+        <div class="bank-divider"></div>
+        <div class="bank-row">
+          <span class="bank-label">Chủ tài khoản</span>
+          <span id="bank-holder" class="bank-value"></span>
+        </div>
+        <button id="copy-btn" class="btn btn-outline btn-copy">
+          📋 Sao chép số tài khoản
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 9. RSVP ===== -->
+  <section id="rsvp">
+    <div class="container">
+      <div class="section-ornament reveal">✦ ✦ ✦</div>
+      <h2 class="section-title reveal">Xác Nhận Tham Dự</h2>
+      <p class="rsvp-desc reveal">Vui lòng xác nhận sự tham dự của bạn để chúng tôi có thể chuẩn bị chu đáo nhất.</p>
+      <div class="rsvp-btns reveal">
+        <button id="rsvp-yes" class="btn btn-primary btn-rsvp">
+          ✓ Tôi sẽ tham dự
+        </button>
+        <button id="rsvp-no" class="btn btn-outline btn-rsvp">
+          ✗ Tôi không thể tham dự
+        </button>
+      </div>
+      <div id="rsvp-message" class="rsvp-message" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="footer-ornament">✦ ✦ ✦</div>
+    <h3 class="footer-title">Cảm ơn bạn!</h3>
+    <p class="footer-text">Sự hiện diện của bạn là món quà ý nghĩa nhất với chúng tôi.</p>
+    <p id="footer-quote" class="footer-quote"></p>
+    <div class="footer-names-small"></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
